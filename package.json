@@ -1,0 +1,5 @@
+{
+  "name": "unilog-enrichment-workbench",
+  "version": "1.0.0",
+  "scripts": { "start": "python server.py", "test": "node --test tests/enrichment.test.js" }
+}

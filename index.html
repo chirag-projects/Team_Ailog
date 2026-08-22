@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Unilog | Content Enrichment</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand"><span class="mark">😉</span><span>AiLog</span></div>
+      <div class="header-note">PRODUCT CONTENT INTELLIGENCE</div>
+      <input id="unicatInput" type="file" accept=".csv,.xlsx,.xls,text/csv" hidden />
+      <button class="ghost" id="unicatBtn">Load UniCat master</button>
+      <button class="ghost" id="resetBtn">New batch</button>
+    </header>
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">CONTENT ENRICHMENT WORKBENCH</p>
+          <h1>
+            Turn raw product rows into<br /><em>search-ready content.</em>
+          </h1>
+          <p class="lede">
+            Clean messy supplier sheets, remove duplicates, normalize units and
+            fractions, build compliant product content, and verify manufacturer
+            sources.
+          </p>
+        </div>
+        <div class="hero-stat">
+          <span id="heroNumber">252</span
+          ><small>delivery-format<br />fields supported</small>
+        </div>
+      </section>
+      <section class="upload-card" id="dropZone">
+        <div class="upload-icon">↑</div>
+        <div>
+          <h2>Drop a CSV or Excel file here</h2>
+          <p>or choose a file with product descriptions and part numbers</p>
+          <input
+            id="fileInput"
+            type="file"
+            accept=".csv,.xlsx,.xls,text/csv"
+            hidden
+          /><button id="chooseBtn" class="primary">Choose file</button
+          ><button id="sampleBtn" class="link-btn">Try a sample row</button>
+        </div>
+        <div class="format">
+          <b>Accepted columns</b
+          ><span>Part_Desc · Mfg_Part_Num · Brand · Manufacturer</span
+          ><span>Other column names are mapped automatically.</span>
+        </div>
+      </section>
+      <section id="workspace" hidden>
+        <div class="batch-bar">
+          <div>
+            <p class="eyebrow">CURRENT BATCH</p>
+            <h2 id="fileName">—</h2>
+            <p id="batchMeta">—</p>
+          </div>
+          <div class="actions">
+            <button class="ghost" id="configureBtn">Review mappings</button
+            ><button class="primary" id="exportBtn">
+              Download enriched CSV</button
+            ><a id="downloadFallback" hidden class="source-link" download
+              >Click if download did not start</a
+            >
+          </div>
+        </div>
+        <div class="pipeline">
+          <span>1. Clean</span><i>→</i><span>2. Deduplicate</span><i>→</i
+          ><span>3. Normalize</span><i>→</i><span>4. Enrich</span><i>→</i
+          ><span>5. Validate</span>
+        </div>
+        <div class="metrics">
+          <article>
+            <b id="rowCount">0</b><span>products processed</span>
+          </article>
+          <article>
+            <b id="duplicateCount">0</b><span>duplicates merged</span>
+          </article>
+          <article>
+            <b id="highCount">0%</b><span>high confidence</span>
+          </article>
+          <article>
+            <b id="attributeCount">0</b><span>attributes found</span>
+          </article>
+          <article><b id="reviewCount">0</b><span>need review</span></article>
+        </div>
+        <div class="toolbar">
+          <div class="tabs">
+            <button class="tab active" data-view="records">
+              Enriched records</button
+            ><button class="tab" data-view="quality">Quality report</button>
+          </div>
+          <input
+            id="search"
+            placeholder="Search product, part number, brand…"
+          />
+        </div>
+        <div id="recordsView">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Classification</th>
+                  <th>Generated content</th>
+                  <th>Attributes</th>
+                  <th>Manufacturer source</th>
+                  <th>Quality</th>
+                </tr>
+              </thead>
+              <tbody id="records"></tbody>
+            </table>
+          </div>
+        </div>
+        <div id="qualityView" hidden class="quality">
+          <h2>Batch quality checks</h2>
+          <div id="qualityChecks"></div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      Unilog Content Enrichment · AI-assisted results should be reviewed when
+      confidence is low.
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="app.js"></script>
+    <script src="python-client.js"></script>
+  </body>
+</html>
