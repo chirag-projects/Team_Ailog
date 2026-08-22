@@ -16,7 +16,7 @@ python server.py
 ```
 # Unilog Content Enrichment Workbench
 
-Run `python server.py`, open `http://127.0.0.1:8000`, upload a CSV/XLSX sheet, and click **Download enriched CSV**.
+Run `python server.py`, open `http://127.0.0.1:5000`, upload a CSV/XLSX sheet, and click **Download enriched CSV**.
 
 Implemented DOCX workflow: clean placeholder values → merge exact duplicates → normalize approved-style units and decimal inches → classify supported products → extract source-evidenced attributes → build content fields → official-domain source validation → full delivery-format CSV export.
 
