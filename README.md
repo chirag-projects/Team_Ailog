@@ -55,3 +55,5 @@ Only data found in the uploaded row is written as a product attribute. The app l
 
 
 ![Ailog Web App](media/webapp_look.png)
+
+updated!
